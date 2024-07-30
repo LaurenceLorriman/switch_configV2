@@ -1,0 +1,257 @@
+[
+  {
+    "id": 1,
+    "description": "Main Distribution Switch",
+    "hostname": "DSOC1",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet1/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:access": {
+                "vlan": {
+                  "vlan": 10
+                }
+              },
+              "Cisco-IOS-XE-switch:mode": {
+                "access": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X8"
+  },
+  {
+    "id": 2,
+    "description": "Secondary Distribution Switch",
+    "hostname": "DSOC2",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet2/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:trunk": {
+                "native": {
+                  "vlan-config": {
+                    "tag": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X24"
+  },
+  {
+    "id": 3,
+    "description": "Distribution Switch",
+    "hostname": "DSOC3",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet3/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:access": {
+                "vlan": {
+                  "vlan": 20
+                }
+              },
+              "Cisco-IOS-XE-switch:mode": {
+                "access": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X8"
+  },
+  {
+    "id": 4,
+    "description": "Edge Distribution Switch",
+    "hostname": "DSOC4",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet4/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:trunk": {
+                "native": {
+                  "vlan-config": {
+                    "tag": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X24"
+  },
+  {
+    "id": 5,
+    "description": "Core Distribution Switch",
+    "hostname": "DSOC5",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet5/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:access": {
+                "vlan": {
+                  "vlan": 30
+                }
+              },
+              "Cisco-IOS-XE-switch:mode": {
+                "access": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X8"
+  },
+  {
+    "id": 6,
+    "description": "Backup Distribution Switch",
+    "hostname": "DSOC6",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet6/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:trunk": {
+                "native": {
+                  "vlan-config": {
+                    "tag": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X24"
+  },
+  {
+    "id": 7,
+    "description": "High-Speed Distribution Switch",
+    "hostname": "DSOC7",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet7/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:access": {
+                "vlan": {
+                  "vlan": 40
+                }
+              },
+              "Cisco-IOS-XE-switch:mode": {
+                "access": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X8"
+  },
+  {
+    "id": 8,
+    "description": "Primary Distribution Switch",
+    "hostname": "DSOC8",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet8/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:trunk": {
+                "native": {
+                  "vlan-config": {
+                    "tag": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X24"
+  },
+  {
+    "id": 9,
+    "description": "Auxiliary Distribution Switch",
+    "hostname": "DSOC9",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet9/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:access": {
+                "vlan": {
+                  "vlan": 50
+                }
+              },
+              "Cisco-IOS-XE-switch:mode": {
+                "access": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X8"
+  },
+  {
+    "id": 10,
+    "description": "Expansion Distribution Switch",
+    "hostname": "DSOC10",
+    "interfaces": {
+      "GigabitEthernet": [
+        {
+          "description": "Uplink to Core Router",
+          "name": "GigabitEthernet10/0/1",
+          "switchport-config": {
+            "switchport": {
+              "Cisco-IOS-XE-switch:trunk": {
+                "native": {
+                  "vlan-config": {
+                    "tag": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "model": "M3X24"
+  }
+]

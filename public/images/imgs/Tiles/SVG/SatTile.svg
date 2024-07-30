@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_13" data-name="Layer 13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #384551;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        stroke-width: 0px;
+      }
+
+      .cls-1, .cls-2, .cls-4, .cls-5, .cls-6 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #45a29e;
+      }
+
+      .cls-3 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-7 {
+        filter: url(#drop-shadow-9);
+      }
+
+      .cls-4 {
+        fill: #191919;
+      }
+
+      .cls-5 {
+        fill: #66fcf1;
+      }
+
+      .cls-6 {
+        fill: #1f2833;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="50" cy="50" fx="50" fy="50" r="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c5c6c7"/>
+      <stop offset=".62" stop-color="#9c9c9d"/>
+      <stop offset="1" stop-color="#898989"/>
+    </radialGradient>
+    <filter id="drop-shadow-9" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur result="blur" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".48"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect class="cls-3" width="100" height="100"/>
+  <g class="cls-7">
+    <g>
+      <path class="cls-1" d="M64.79,35.38c16.11,16.11,23.17,35.25,14.43,43.98-8.73,8.73-31.48,5.32-47.59-10.79C15.51,52.46,12.1,29.71,20.84,20.98c8.74-8.74,27.84-1.71,43.95,14.4h0Z"/>
+      <path class="cls-5" d="M64.86,34.94c15.77,15.77,23.19,33.92,16.57,40.54s-24.77-.8-40.54-16.57c-15.77-15.77-23.19-33.92-16.57-40.54s24.77.8,40.54,16.57"/>
+      <path class="cls-6" d="M61.91,37.51c14.13,14.13,21.47,29.72,16.37,34.82-5.09,5.09-20.68-2.23-34.81-16.37h0c-14.13-14.14-21.47-29.73-16.37-34.82,5.09-5.09,20.68,2.23,34.81,16.37h0"/>
+      <path class="cls-2" d="M62.3,38.69c13.05,13.05,20.2,27.04,15.98,31.27-4.22,4.22-18.22-2.93-31.26-15.97h0c-13.05-13.05-20.2-27.05-15.98-31.27,4.22-4.22,18.22,2.93,31.26,15.97h0"/>
+      <g>
+        <path class="cls-4" d="M56.5,42.19c2.27,2.27,3.17,5.07,2,6.24s-3.97.28-6.24-2-3.17-5.07-2-6.24,3.97-.28,6.24,2"/>
+        <path class="cls-4" d="M52.73,43.25l21.35-17.41-18.49,20.86s-2.86-3.45-2.86-3.45Z"/>
+        <path class="cls-4" d="M76.1,23.82c1.31,1.31,1.31,3.43,0,4.73-1.31,1.31-3.43,1.31-4.73,0h0c-1.31-1.31-1.31-3.43,0-4.74,1.31-1.31,3.43-1.31,4.73,0h0"/>
+      </g>
+    </g>
+  </g>
+</svg>

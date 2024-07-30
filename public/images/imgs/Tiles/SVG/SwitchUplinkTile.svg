@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_15" data-name="Layer 15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #384551;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1, .cls-8 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #bdbdbd;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-6, .cls-7 {
+        stroke-width: .5px;
+      }
+
+      .cls-2, .cls-9, .cls-4, .cls-5, .cls-6 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-9, .cls-5 {
+        stroke: #1f2833;
+      }
+
+      .cls-3 {
+        stroke: #9c9c9c;
+      }
+
+      .cls-3, .cls-7 {
+        stroke-linejoin: round;
+      }
+
+      .cls-8 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-9 {
+        fill: none;
+        filter: url(#drop-shadow-12);
+        stroke-width: 3px;
+      }
+
+      .cls-4 {
+        fill: #00c700;
+      }
+
+      .cls-4, .cls-6, .cls-7 {
+        stroke: #7d7d7d;
+      }
+
+      .cls-5 {
+        fill: #737f8b;
+      }
+
+      .cls-6 {
+        fill: #9c9c9c;
+      }
+
+      .cls-7 {
+        fill: #c51900;
+      }
+
+      .cls-10 {
+        filter: url(#drop-shadow-11);
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="50" cy="50" fx="50" fy="50" r="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c5c6c7"/>
+      <stop offset=".62" stop-color="#9c9c9d"/>
+      <stop offset="1" stop-color="#898989"/>
+    </radialGradient>
+    <filter id="drop-shadow-11" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur result="blur" stdDeviation="0"/>
+      <feFlood flood-color="#000" flood-opacity=".48"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="drop-shadow-12" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur result="blur-2" stdDeviation="0"/>
+      <feFlood flood-color="#000" flood-opacity=".48"/>
+      <feComposite in2="blur-2" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect class="cls-8" width="100" height="100"/>
+  <g class="cls-10">
+    <g>
+      <path class="cls-5" d="M22.2,68.2l7.2-7.2h43.2l7.2,7.2v16.8H22.2v-16.8Z"/>
+      <path class="cls-3" d="M25.08,70.84h51.48c.33,0,.6.27.6.6v10.8c0,.33-.27.6-.6.6H24.96c-.33,0-.6-.27-.6-.6v-10.8c0-.33.27-.6.6-.6"/>
+      <path class="cls-7" d="M63.53,75.47c0,.8-1.2.8-1.2,0s1.2-.8,1.2,0"/>
+      <path class="cls-6" d="M69,71.8h1.44v9.6h-1.44v-9.6Z"/>
+      <path class="cls-1" d="M26.52,71.8h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-1" d="M26.52,77.56h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-1" d="M33.72,71.8h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-1" d="M40.92,71.8h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-1" d="M48.12,71.8h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-1" d="M55.32,71.8h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-1" d="M33.72,77.56h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-1" d="M40.92,77.56h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-1" d="M48.12,77.56h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-1" d="M55.32,77.56h3.48c.33,0,.6.27.6.6v2.64c0,.33-.27.6-.6.6h-3.6c-.33,0-.6-.27-.6-.6v-2.6c0-.35.26-.64.58-.64"/>
+      <path class="cls-2" d="M26.93,68.44l4.8-4.8h39.6l4.8,4.8H26.93Z"/>
+      <path class="cls-4" d="M63.53,73.07c0,.8-1.2.8-1.2,0s1.2-.8,1.2,0"/>
+      <path class="cls-6" d="M71.4,71.8h1.44v9.6h-1.44v-9.6Z"/>
+      <path class="cls-6" d="M73.8,71.8h1.44v9.6h-1.44v-9.6Z"/>
+      <path class="cls-4" d="M63.53,77.87c0,.8-1.2.8-1.2,0s1.2-.8,1.2,0"/>
+      <path class="cls-4" d="M63.53,80.27c0,.8-1.2.8-1.2,0s1.2-.8,1.2,0"/>
+    </g>
+  </g>
+  <polyline class="cls-9" points="44.21 55.5 44.21 28.21 34.21 28.5 50.21 12.5 65.79 28.21 56.21 28.21 56.21 55.57"/>
+</svg>
