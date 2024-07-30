@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button, Container, Form, Card, Image } from "react-bootstrap";
 
-import "../custom.css"; // Ensure your custom styles are included
+import "../styles/custom.css"; // Ensure your custom styles are included
 
 const Login = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Image, Container } from "react-bootstrap";
-import "../custom.css";
-import theme from "../theme";
+import "../styles/custom.css";
+import theme from "../styles/theme.js";
 
 // Define the new paths for each tile
 const tilePaths = {

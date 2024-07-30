@@ -1,85 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Card, Dropdown, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Form, Dropdown, Button } from "react-bootstrap";
 import SwitchDisplay from "./SwitchDisplay";
-import SvgM3X8 from "./SvgM3X8";
-import SvgM3X24 from "./SvgM3X24";
-import theme from "../theme";
-import { getConfig } from "../services/RestConfService";
 import ConfigViewer from "./ConfigViewer";
-import axios from "axios"; // Import axios
+import ConfigDisplay from "./ConfigDisplay";
+import switchProfiles from "../services/switchProfiles.json"; // Import the JSON file directly
+import theme from "../styles/theme";
+import SvgM3X8 from "./SvgM3X8"; // Import statement for SvgM3X8 is correct
+import SvgM3X24 from "./SvgM3X24"; // Import statement for SvgM3X24 is correct
 
 const ConfigSection = () => {
   const [selectedSwitch, setSelectedSwitch] = useState("");
   const [configOutcome, setConfigOutcome] = useState("");
   const [selectedHostname, setSelectedHostname] = useState("");
   const [hostnames, setHostnames] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [configViewerVisible, setConfigViewerVisible] = useState(false);
+  const [displayConfig, setDisplayConfig] = useState(""); // Added state for displayConfig
 
-  const [configViewerVisible, setConfigViewerVisible] = useState(true);
-  const handleSwitchChange = (event) => {
-    const selectedValue = event.target.value;
-    // Assuming 'setSelectedSwitch' updates the state to reflect the current selection
-    setSelectedSwitch(selectedValue);
-  };
-
-  // Function to check if the server is running
-  const isServerRunning = async (url) => {
-    try {
-      await axios.get(url);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  };
-
-  // Function to load data from switchProfiles.json
-  // Adjusted for React, assuming switchProfiles.json is public/switchProfiles.json
-  const loadDataFromFile = async () => {
-    try {
-      const response = await fetch(
-        process.env.PUBLIC_URL + "/switchProfiles.json"
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      throw error;
-    }
+  const handleSwitchChange = (eventKey) => {
+    setSelectedSwitch(eventKey);
   };
 
   useEffect(() => {
-    console.log("useEffect triggered in ConfigSection");
-    const fetchData = async () => {
-      setLoading(true);
-      console.log("Fetching data...");
-      const serverUrl = "http://127.0.0.1:5000/restconf"; // Example server URL
-      try {
-        console.log(`Checking if server at ${serverUrl} is running...`);
-        if (await isServerRunning(serverUrl)) {
-          console.log("Server is running. Fetching data...");
-          const response = await axios.get(serverUrl);
-          console.log("Data fetched from server:", response.data);
-          const extractedHostnames = response.data.map((item) => item.hostname);
-          console.log("Extracted hostnames:", extractedHostnames);
-          setHostnames(extractedHostnames);
-        } else {
-          console.log("Server is not running. Loading data from file...");
-          const data = await loadDataFromFile();
-          console.log("Data loaded from file:", data);
-          const extractedHostnames = data.map((item) => item.hostname);
-          console.log("Extracted hostnames from file:", extractedHostnames);
-          setHostnames(extractedHostnames);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-        setError(error.message);
-      } finally {
-        setLoading(false);
-        console.log("Data fetching process completed.");
-      }
-    };
-
-    fetchData();
+    // Directly load hostnames from switchProfiles.json
+    try {
+      const extractedHostnames = switchProfiles.map((item) => item.hostname);
+      setHostnames(extractedHostnames);
+    } catch (error) {
+      console.error("Failed to load hostnames from file:", error);
+      setError("Failed to load hostnames from file");
+    }
   }, []);
 
   const handleGetConfig = async () => {
@@ -87,35 +37,42 @@ const ConfigSection = () => {
       `Fetching config for ${selectedSwitch} with FQDN: ${selectedHostname}`
     );
     try {
-      const configData = await getConfig(selectedHostname);
-      console.log("Config Data:", configData);
-      setConfigOutcome(JSON.stringify(configData, null, 2)); // Pretty print JSON
-
-      // Simplified switch model selection
-      switch (configData.model) {
-        case "M3X8":
-          setSelectedSwitch("SvgM3X8");
-          break;
-        case "M3X24":
-          setSelectedSwitch("SvgM3X24");
-          break;
-        default:
-          setSelectedSwitch(""); // Handle unknown models
+      const backupData = switchProfiles;
+      const backupConfig = backupData.find(
+        (item) => item.hostname === selectedHostname
+      );
+      if (backupConfig) {
+        console.log("Backup Config Data:", backupConfig);
+        setConfigOutcome(JSON.stringify(backupConfig, null, 2));
+        setDisplayConfig(backupConfig); // Update displayConfig with the fetched config
+        // Update selectedSwitch based on the model in backupConfig
+        const switchKey = mapModelToSwitchKey(backupConfig.model);
+        setSelectedSwitch(switchKey);
+      } else {
+        console.error("Hostname not found in backup data");
+        setConfigOutcome("Hostname not found in backup data.");
       }
     } catch (error) {
-      console.error("Failed to fetch config:", error);
-      setConfigOutcome(`Failed to fetch config: ${error.message}`);
+      console.error("Failed to load from file:", error);
+      setConfigOutcome(`Failed to load config from file: ${error.message}`);
     }
   };
-
-  // Loading and error handling
-  if (loading) return <div>Loading hostnames...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   // Toggle visibility of ConfigViewer
   const toggleConfigViewer = () => {
     setConfigViewerVisible(!configViewerVisible);
   };
+
+  const mapModelToSwitchKey = (model) => {
+    if (model === "M3X8") return "SvgM3X8";
+    if (model === "M3X24") return "SvgM3X24";
+    return ""; // Default case if no match found
+  };
+
+  if (error) {
+    console.log("Error:", error);
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <>
@@ -127,8 +84,8 @@ const ConfigSection = () => {
           border: "none",
         }}
       >
-        <Row className="mb-3">
-          <Col xs={5} className="justify-content-center">
+        <Row className="mb-3 g-3">
+          <Col sm={12} md={5} className="justify-content-center">
             <Form.Select
               className="text-fqdn"
               id="FQDN"
@@ -146,21 +103,23 @@ const ConfigSection = () => {
             </Form.Select>
           </Col>
           <Col
-            xs={7}
+            sm={12}
+            md={7}
             className="d-flex align-items-center justify-content-center"
           >
             <div
               className="d-flex align-items-center"
-              style={{ width: "100%" }}
+              style={{ width: "100%", gap: "10px" }}
             >
               <Dropdown
                 className="dropdown m-auto"
                 onSelect={handleSwitchChange}
+                style={{ flexGrow: 1 }}
               >
                 <Dropdown.Toggle
-                  style={{ width: "100%" }}
                   variant="secondary"
                   id="switchList"
+                  style={{ width: "100%" }}
                 >
                   {selectedSwitch || "Select Switch"}
                 </Dropdown.Toggle>
@@ -170,12 +129,24 @@ const ConfigSection = () => {
                 </Dropdown.Menu>
               </Dropdown>
               <Button
-                className="btn btn-secondary mr-5"
-                onClick={() => setSelectedSwitch("")}
+                className="btn btn-secondary"
+                onClick={() => {
+                  setSelectedSwitch("");
+                  setSelectedHostname(""); // Reset the hostname dropdown
+                  setConfigViewerVisible(false); // Make ConfigViewer invisible
+                }}
+                style={{ whiteSpace: "nowrap" }}
               >
                 Clear
               </Button>
-              <Button className="btn btn-primary" onClick={handleGetConfig}>
+              <Button
+                className="btn btn-primary"
+                onClick={() => {
+                  handleGetConfig();
+                  setConfigViewerVisible(true);
+                }}
+                style={{ whiteSpace: "nowrap" }}
+              >
                 Get Config!
               </Button>
             </div>
@@ -185,7 +156,7 @@ const ConfigSection = () => {
       <Row>
         <Col>
           <Card
-            className="text-white p-4 border rounded mb-3 "
+            className="text-white p-4 border rounded mb-3"
             style={{
               background: theme.gradient,
               maxHeight: "50vh",
@@ -203,21 +174,20 @@ const ConfigSection = () => {
               <SwitchDisplay selectedSwitch={selectedSwitch} />
             ) : null}
           </Card>
-          <Row>
-            <Col>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  width: "100vw",
-                }}
-              >
-                {configViewerVisible && configOutcome && (
-                  <ConfigViewer configOutcome={configOutcome} />
-                )}
-              </div>
-            </Col>
-          </Row>
+
+          <Col>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                maxHeight: "calc(100vh - 20px)",
+                maxWidth: "calc(100vw - 20px)",
+                overflow: "auto",
+              }}
+            >
+              {displayConfig && <ConfigDisplay config={displayConfig} />}
+            </div>
+          </Col>
         </Col>
       </Row>
     </>

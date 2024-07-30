@@ -1,66 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import useSvgInteraction from "../services/useSVGInteraction.js"; // Adjust the import path
 
 const SvgM3X8 = ({ selectedTileText, selectedTileImage, ...props }) => {
-  const [clickedRectId, setClickedRectId] = useState(null);
-  const [rectText, setRectText] = useState({});
-  const [isPortSelected, setIsPortSelected] = useState(false); // New state to track port selection
-
-  const handleRectClick = (event) => {
-    const rectId = event.target.id;
-    if (clickedRectId === rectId) {
-      console.log(rectId, "Deselected");
-      setClickedRectId(null);
-      setIsPortSelected(false); // Deselect port
-
-      setRectText((prevState) => ({ ...prevState, [rectId]: "" }));
-    } else {
-      console.log(rectId, "Selected");
-      setClickedRectId(rectId);
-
-      setRectText((prevState) => ({
-        ...prevState,
-        [rectId]: selectedTileText,
-      }));
-    }
-  };
-  const handleTextClick = (event) => {
-    const rectId = event.target.getAttribute("data-rectid");
-    handleRectClick({ target: { id: rectId } });
-  };
-  // Inside SvgM3X8 component
-  const [selectedPort, setSelectedPort] = useState(null);
-  const [selectedConfig, setSelectedConfig] = useState(null);
-
-  useEffect(() => {
-    if (selectedPort && selectedConfig) {
-      const configCode = generateConfigCode(selectedPort, selectedConfig);
-      sendConfigToSwitch(configCode);
-      // Reset after sending configuration
-      setSelectedPort(null);
-      setSelectedConfig(null);
-    }
-  }, [selectedPort, selectedConfig]);
-
-  // Dummy functions for generating and sending configuration
-  function generateConfigCode(port, config) {
-    // Generate the configuration code based on selected port and config
-    return `Config code for ${port} with ${config}`;
-  }
-
-  function sendConfigToSwitch(configCode) {
-    console.log(`Sending to switch: ${configCode}`);
-    // Implement sending logic here
-  }
+  // Use the custom hook for interaction logic
+  const {
+    clickedRectId,
+    rectText,
+    isPortSelected,
+    selectedPort,
+    selectedConfig,
+    handleRectClick,
+    handleTextClick,
+    handleConfigTileClick,
+  } = useSvgInteraction();
 
   const rectsData = [
-    { id: "port-1/1", x: 72.86, y: 129.41, width: 95, height: 86 },
-    { id: "port-1/2", x: 72.86, y: 223.41, width: 95, height: 86 },
-    { id: "port-1/3", x: 195.98, y: 129.41, width: 95, height: 86 },
-    { id: "port-1/4", x: 195.98, y: 223.41, width: 95, height: 86 },
-    { id: "port-1/5", x: 298.63, y: 129.41, width: 95, height: 86 },
-    { id: "port-1/6", x: 298.63, y: 223.41 },
-    { id: "port-1/7", x: 401.28, y: 129.41 },
-    { id: "port-1/8", x: 401.28, y: 223.41 },
+    { id: "1/1", x: 72.86, y: 129.41, width: 95, height: 86 },
+    { id: "1/2", x: 72.86, y: 223.41, width: 95, height: 86 },
+    { id: "1/3", x: 195.98, y: 129.41, width: 95, height: 86 },
+    { id: "1/4", x: 195.98, y: 223.41, width: 95, height: 86 },
+    { id: "1/5", x: 298.63, y: 129.41, width: 95, height: 86 },
+    { id: "1/6", x: 298.63, y: 223.41 },
+    { id: "1/7", x: 401.28, y: 129.41 },
+    { id: "1/8", x: 401.28, y: 223.41 },
 
     // Add more rectangles as needed
   ];

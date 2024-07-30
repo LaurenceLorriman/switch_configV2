@@ -1,7 +1,7 @@
 // components/Navbar.js
 import React from "react";
-import "../css/bootstrap.css";
-import "../css/index.css";
+import "../styles/bootstrap.css";
+import "../styles/index.css";
 
 const Navbar = () => {
   return (

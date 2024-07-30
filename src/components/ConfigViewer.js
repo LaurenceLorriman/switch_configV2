@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Card, Button } from "react-bootstrap";
 import { Rnd } from "react-rnd";
-import "../custom.css";
+import "../styles/custom.css";
 
 const ConfigViewer = ({ configOutcome, onVisibilityChange }) => {
   let data;

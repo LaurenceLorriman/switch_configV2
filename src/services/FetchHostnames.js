@@ -1,5 +1,6 @@
 // src/FetchHostnames.js
 import React, { useState, useEffect } from "react";
+import switchProfiles from "./switchProfiles.json"; // Step 1: Import the JSON file
 
 const FetchHostnames = () => {
   const [hostnames, setHostnames] = useState([]);
@@ -7,7 +8,6 @@ const FetchHostnames = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch data from the API
     const fetchData = async () => {
       try {
         const response = await fetch("http://127.0.0.1:5000/restconf");
@@ -15,14 +15,26 @@ const FetchHostnames = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-
-        // Extract hostnames
         const extractedHostnames = data.map((item) => item.hostname);
         setHostnames(extractedHostnames);
       } catch (error) {
-        setError(error.message);
+        console.error(
+          "Fetching from API failed, loading from local JSON",
+          error
+        ); // Step 2a: Log the error
+        try {
+          // Step 2b: Extract hostnames from switchProfiles.json
+          const extractedHostnames = switchProfiles.map(
+            (item) => item.hostname
+          );
+          setHostnames(extractedHostnames);
+        } catch (jsonError) {
+          setError(jsonError.message); // Handle any errors in processing JSON
+        } finally {
+          setLoading(false);
+        }
       } finally {
-        setLoading(false);
+        if (!error) setLoading(false); // Ensure loading is set to false if there's no error
       }
     };
 
