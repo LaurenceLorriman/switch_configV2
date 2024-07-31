@@ -185,7 +185,9 @@ const ConfigSection = () => {
                 overflow: "auto",
               }}
             >
-              {displayConfig && <ConfigDisplay config={displayConfig} />}
+              {configViewerVisible && displayConfig && (
+                <ConfigDisplay config={displayConfig} />
+              )}
             </div>
           </Col>
         </Col>
